@@ -20,8 +20,8 @@
 
 const int trigPin = 2;
 
-const int echoPinLeft = 3;
-const int echoPinMid = 5;
+const int echoPinLeft = 5;
+const int echoPinMid = 3;
 const int echoPinRight = 6;
 
 const int LedLeft = 10;
@@ -47,9 +47,14 @@ void loop()
   pinMode(LedMid, OUTPUT);
   pinMode(LedRight, OUTPUT);
 
-  digitalWrite(LedLeft, LOW);
-  digitalWrite(LedMid, LOW);
-  digitalWrite(LedRight, LOW);
+  //Input echo pins
+  pinMode(echoPinLeft, INPUT);
+  pinMode(echoPinMid, INPUT);
+  pinMode(echoPinRight, INPUT);
+
+  //digitalWrite(LedLeft, LOW);
+  //digitalWrite(LedMid, LOW);
+  //digitalWrite(LedRight, LOW);
 
   // The sensor is triggered by a HIGH pulse of 10 or more microseconds.
   // Give a short LOW pulse beforehand to ensure a clean HIGH pulse:
@@ -63,11 +68,24 @@ void loop()
   // Read the signal from the sensor: a HIGH pulse whose
   // duration is the time (in microseconds) from the sending
   // of the ping to the reception of its echo off of an object.
-  pinMode(echoPinLeft, INPUT);
-  pinMode(echoPinMid, INPUT);
-  pinMode(echoPinRight, INPUT);
+
   durationLeft = pulseIn(echoPinLeft, HIGH);
+
+  //Trigger again for middle pin
+  delayMicroseconds(2);
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+  //Read signal for middle pin
   durationMid = pulseIn(echoPinMid, HIGH);
+  
+  //Trigger again for right pin
+  delayMicroseconds(2);
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+  
+  //Read signal for middle pin
   durationRight = pulseIn(echoPinRight, HIGH);
 
   // convert the time into a distance
@@ -81,14 +99,16 @@ void loop()
   //Serial.print("in, ");
   
   Serial.print(cmLeft);
-  Serial.print("cmLeft");
-  Serial.print(cmMid);
-  Serial.print("cmMid");
-  Serial.print(cmRight);
-  Serial.print("cmRight");
+  Serial.print("cm Left ");
 
+  Serial.print(cmMid);
+  Serial.print("cm Mid  ");
+
+  Serial.print(cmRight);
+  Serial.print("cm Right");
   Serial.println();
-  
+  Serial.println();
+  /*
   if (cmLeft <= 10)
   {
   	digitalWrite(LedLeft, HIGH);
@@ -100,8 +120,8 @@ void loop()
   if (cmRight <= 10)
   {
   	digitalWrite(LedRight, HIGH);
-  }
-  delay(5);
+  }*/
+  delay(10);
 }
 
 /*long microsecondsToInches(long microseconds)
