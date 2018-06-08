@@ -3,7 +3,7 @@ const int clk = 2;
 const int enable = 3;
 int i;
 
-int a[8] = {LOW,LOW,LOW,LOW,LOW,HIGH,LOW,HIGH};
+int a[8] = {LOW,LOW,LOW,LOW,LOW,HIGH,LOW,HIGH}; //Depends on the direction you want the wheels to rotate
 
 
 void setup() {
