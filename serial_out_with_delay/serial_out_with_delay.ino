@@ -1,23 +1,21 @@
-const int serial_out = 13;
-const int clk = 2;
-const int enable = 3;
+const int serial_out = 2;
+const int clk = 4;
+const int enable = 5;
 int i;
 
-int a[8] = {LOW,LOW,LOW,LOW,LOW,HIGH,LOW,HIGH}; //Depends on the direction you want the wheels to rotate
+int a[8] = {LOW,LOW,LOW,LOW,LOW,HIGH,LOW,HIGH}; //{Dummy,Dummy,Dummy,Dummy,front left,front right,back left,back right}
+//Motion of wheels - LOW is backward, HIGH is forward
 
-
-void setup() {
-  
-  // put your setup code here, to run once:
+void setup() 
+{  
   Serial.begin(9600);
   pinMode(serial_out, OUTPUT);
   pinMode(clk, OUTPUT);
   pinMode(enable, OUTPUT);
 }
 
-void loop() {
-  // put your main code here, to run repeatedly:
-  
+void loop() 
+{
   for (i = 0; i < 8; ++i)
   {
   	digitalWrite(serial_out, a[i]);
@@ -35,7 +33,8 @@ void loop() {
     }
     delay(25);
   }
-   if(i == 8){
+   if(i == 8)
+   {
       digitalWrite(enable, HIGH);
       delay(25);
       digitalWrite(enable, LOW);
