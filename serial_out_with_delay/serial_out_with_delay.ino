@@ -3,7 +3,7 @@ const int clk = 4;
 const int enable = 7;
 int i;
 
-int a[8] = {LOW,LOW,LOW,LOW,LOW,HIGH,LOW,HIGH}; //{Dummy,Dummy,Dummy,Dummy,front left,front right,back left,back right}
+int a[8] = {LOW,HIGH,LOW,HIGH,LOW,HIGH,HIGH,HIGH}; //{Dummy,Dummy,Dummy,Dummy,front left,front right,back left,back right}
 //Motion of wheels - LOW is backward, HIGH is forward
 
 void setup() 

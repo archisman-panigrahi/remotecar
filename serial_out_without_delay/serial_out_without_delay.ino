@@ -2,16 +2,17 @@ const int serial_out = 2;
 const int clk = 4;
 const int enable = 7;
 int i=0;
+int p=0;
 
-int a[8]; //{Dummy,Dummy,Dummy,Dummy,front left,front right,back left,back right} 
+int a[8] = {LOW,HIGH,LOW,HIGH,LOW,HIGH,HIGH,HIGH};//{Dummy,Dummy,Dummy,front left,front right,back left,back right,Dummy} 
 //Motion of wheels - LOW is backward, HIGH is forward
 int forward[8] = {LOW,LOW,LOW,LOW,HIGH,HIGH,HIGH,HIGH};
 int backward[8] = {LOW,LOW,LOW,LOW,LOW,LOW,LOW};
 int right[8] = {LOW,LOW,LOW,LOW,HIGH,LOW,HIGH,LOW};
 int left[8] = {LOW,LOW,LOW,LOW,LOW,HIGH,LOW,HIGH};
-unsigned long ptime = 0; //time of previous change
-unsigned long ctime; //current time
-long interval = 50;
+unsigned long previousTime = 0; //time of previous change
+
+long interval = 100;
 
 void setup()
 {
@@ -19,7 +20,8 @@ void setup()
   pinMode(serial_out, OUTPUT);
   pinMode(clk, OUTPUT);
   pinMode(enable, OUTPUT);
-  digitalWrite(clk, LOW);
+  digitalWrite(clk, HIGH); //Initially clock should be high due to positive edge triggered IC
+  //copy(a,backward,8); //This is temporary. Later we will change this dynamically with Raspberry Pi
 }
 
 void alterValue (int pin)
@@ -35,23 +37,37 @@ void alterValue (int pin)
 }
 void loop()
 {
-	a = forward; //This is temporary. Later we will change this dynamically with Raspberry Pi
-  ctime = millis();
-  if (ctime - ptime >= interval)
+  unsigned long currentTime = millis(); //current time
+  if((currentTime - previousTime) > interval)
   {
+    previousTime = currentTime;
   	digitalWrite(serial_out, a[i]);
-  	alterValue(clk);
+    Serial.print(i);
+    Serial.print("  ");
+    Serial.println(a[i]);
   	i++;
-  	if (i == 8)
+  	if(i == 8)
   	{
   		digitalWrite(enable, HIGH);
   		i = 0;
-  		ptime = ctime;
-  		delay(50);
+  		delay(1);
+      digitalWrite(enable, LOW);
   	}
+   alterValue(clk);
+    p = 0;
   }
-  else if (ctime - ptime >= (interval/2))
+  else if (currentTime - previousTime >= (interval/2) && p == 0)
   {
   	alterValue(clk);
+    p = 1;
   }
+}
+
+void copy(int destination[], int source[], int count)
+{
+	int k;
+	for (k = 0; k < count; ++k)
+	{
+		destination[k] = source[k];
+	}
 }
