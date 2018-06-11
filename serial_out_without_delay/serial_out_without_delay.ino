@@ -2,7 +2,7 @@ const int serial_out = 2;
 const int clk = 4;
 const int enable = 7;
 int i=0;
-int p=0;
+int p=0; //This is for stopping the racing of clock
 
 int a[8] = {LOW,HIGH,LOW,HIGH,LOW,HIGH,HIGH,HIGH};//{Dummy,Dummy,Dummy,front left,front right,back left,back right,Dummy} 
 //Motion of wheels - LOW is backward, HIGH is forward
@@ -40,6 +40,10 @@ void loop()
   unsigned long currentTime = millis(); //current time
   if((currentTime - previousTime) > interval)
   {
+  	if (i == 0)
+  	{
+  		digitalWrite(enable, LOW);
+  	}
     previousTime = currentTime;
   	digitalWrite(serial_out, a[i]);
     Serial.print(i);
@@ -50,8 +54,6 @@ void loop()
   	{
   		digitalWrite(enable, HIGH);
   		i = 0;
-  		delay(1);
-      digitalWrite(enable, LOW);
   	}
    alterValue(clk);
     p = 0;
