@@ -1,6 +1,6 @@
 const int serial_out = 2;
 const int clk = 4;
-const int enable = 5;
+const int enable = 7;
 int i=0;
 
 int a[8]; //{Dummy,Dummy,Dummy,Dummy,front left,front right,back left,back right} 

@@ -7,7 +7,7 @@ int a[8] = {LOW,LOW,LOW,LOW,LOW,HIGH,LOW,HIGH}; //{Dummy,Dummy,Dummy,Dummy,front
 //Motion of wheels - LOW is backward, HIGH is forward
 
 void setup() 
-{  
+{
   Serial.begin(9600);
   pinMode(serial_out, OUTPUT);
   pinMode(clk, OUTPUT);
