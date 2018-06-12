@@ -1,3 +1,7 @@
+/* Note there might be glitches in the D flip flop output if the motor driver
+   is connected to the flip-flop, but not connected to power. Once the motor deiver
+   gets power and the motors start running, there will be no glitches. */
+
 const int serial_out = 2;
 const int clk = 4;
 const int enable = 7;
