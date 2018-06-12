@@ -4,15 +4,15 @@ const int enable = 7;
 int i=0;
 int p=0; //This is for stopping the racing of clock
 
-int a[8] = {LOW,HIGH,LOW,HIGH,LOW,HIGH,HIGH,HIGH};//{Dummy,Dummy,Dummy,front left,front right,back left,back right,Dummy} 
+int a[8] = {LOW,HIGH,LOW,HIGH,LOW,LOW,HIGH,LOW};//{Dummy,Dummy,Dummy,front left,front right,back left,back right,Dummy} 
 //Motion of wheels - LOW is backward, HIGH is forward
-int forward[8] = {LOW,LOW,LOW,LOW,HIGH,HIGH,HIGH,HIGH};
+int forward[8] = {LOW,LOW,LOW,HIGH,HIGH,HIGH,HIGH,LOW};
 int backward[8] = {LOW,LOW,LOW,LOW,LOW,LOW,LOW};
-int right[8] = {LOW,LOW,LOW,LOW,HIGH,LOW,HIGH,LOW};
-int left[8] = {LOW,LOW,LOW,LOW,LOW,HIGH,LOW,HIGH};
+int right[8] = {LOW,LOW,LOW,HIGH,LOW,HIGH,LOW,LOW};
+int left[8] = {LOW,LOW,LOW,LOW,HIGH,LOW,HIGH,LOW};
 unsigned long previousTime = 0; //time of previous change
-
-long interval = 100;
+unsigned long currentTime;
+long interval = 10; //time period of clock
 
 void setup()
 {
@@ -37,7 +37,7 @@ void alterValue (int pin)
 }
 void loop()
 {
-  unsigned long currentTime = millis(); //current time
+  currentTime = millis(); //current time
   if((currentTime - previousTime) > interval)
   {
   	if (i == 0)
@@ -55,7 +55,7 @@ void loop()
   		digitalWrite(enable, HIGH);
   		i = 0;
   	}
-   alterValue(clk);
+    alterValue(clk);
     p = 0;
   }
   else if (currentTime - previousTime >= (interval/2) && p == 0)
