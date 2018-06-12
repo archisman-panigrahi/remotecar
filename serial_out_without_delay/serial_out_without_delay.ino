@@ -12,8 +12,8 @@ int a[8];// = {LOW,HIGH,LOW,HIGH,LOW,LOW,HIGH,HIGH};//{Dummy,Dummy,Dummy,Dummy,f
 //Motion of wheels - LOW is backward, HIGH is forward
 int forward[8] = {HIGH,HIGH,HIGH,HIGH,HIGH,HIGH,HIGH,HIGH};
 int backward[8] = {LOW,LOW,LOW,LOW,LOW,LOW,LOW};
-int right[8] = {HIGH,LOW,HIGH,LOW,HIGH,LOW,HIGH,LOW};
-int left[8] = {LOW,HIGH,LOW,HIGH,LOW,HIGH,LOW,HIGH};
+int right[8] = {HIGH,LOW,HIGH,LOW,HIGH,LOW,HIGH,HIGH};
+int left[8] = {LOW,HIGH,LOW,HIGH,LOW,HIGH,HIGH,HIGH};
 unsigned long previousTime = 0; //time of previous change
 unsigned long currentTime;
 long interval = 10; //time period of clock in milliseconds
