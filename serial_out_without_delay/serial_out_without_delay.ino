@@ -42,30 +42,6 @@ void alterValue (int pin)
 }
 void loop()
 {
-  if(Serial.available())
-  {
-    input = Serial.read();
-  }
-  if (input == 97) 
-  {
-    copy(a,forward,8);
-    Serial.println("moving forward");
-  }
-  else if (input == 98)
-  {
-    copy(a,backward,8);
-    Serial.println("moving backward");
-  }
-  else if (input == 99)
-  {
-    copy(a,left,8);
-    Serial.println("moving left");
-  }
-  else if (input == 100)
-  {
-    copy(a,right,8);
-    Serial.println("moving right");
-  }
   currentTime = millis(); //current time
   if((currentTime - previousTime) > interval)
   {
@@ -86,6 +62,31 @@ void loop()
   	if(i == 8)
   	{
   		i = 0;
+      if(Serial.available()) // Don't keep this outside. Somehow the clock does not move correctly in that case
+      {
+        input = Serial.read();
+      }
+        if (input == 97) 
+      {
+        copy(a,forward,8);
+        Serial.println("moving forward");
+    
+      }
+      else if (input == 98)
+      {
+        copy(a,backward,8);
+        Serial.println("moving backward");
+      }
+      else if (input == 99)
+      {
+        copy(a,left,8);
+        Serial.println("moving left");
+      }
+      else if (input == 100)
+      {
+        copy(a,right,8);
+        Serial.println("moving right");
+      }
   	}
     alterValue(clk);
     p = 0;
