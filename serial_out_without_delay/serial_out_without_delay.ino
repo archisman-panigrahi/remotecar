@@ -7,6 +7,7 @@ const int clk = 4;
 const int enable = 7;
 int i=0;
 int p=0; //This is for stopping the racing of clock
+int input;
 
 int a[8];// = {LOW,HIGH,LOW,HIGH,LOW,LOW,HIGH,HIGH};//{Dummy,Dummy,Dummy,Dummy,front left,front right,back left,back right} 
 //Motion of wheels - LOW is backward, HIGH is forward
@@ -24,7 +25,7 @@ void setup()
   pinMode(serial_out, OUTPUT);
   pinMode(clk, OUTPUT);
   pinMode(enable, OUTPUT);
-  copy(a,left,8); //This is temporary. Later we will change this dynamically with Raspberry Pi
+  copy(a,forward,8); //This is the initial condition. Later we will change this dynamically with Raspberry Pi
   digitalWrite(clk, HIGH); //Initially clock should be high due to positive edge triggered IC
 }
 
@@ -41,6 +42,30 @@ void alterValue (int pin)
 }
 void loop()
 {
+  if(Serial.available())
+  {
+    input = Serial.read();
+  }
+  if (input == 97) 
+  {
+    copy(a,forward,8);
+    Serial.println("moving forward");
+  }
+  else if (input == 98)
+  {
+    copy(a,backward,8);
+    Serial.println("moving backward");
+  }
+  else if (input == 99)
+  {
+    copy(a,left,8);
+    Serial.println("moving left");
+  }
+  else if (input == 100)
+  {
+    copy(a,right,8);
+    Serial.println("moving right");
+  }
   currentTime = millis(); //current time
   if((currentTime - previousTime) > interval)
   {
@@ -54,9 +79,9 @@ void loop()
     }
     previousTime = currentTime;
   	digitalWrite(serial_out, a[i]);
-    Serial.print(i);
-    Serial.print("  ");
-    Serial.println(a[i]);
+    //Serial.print(i);
+    //Serial.print("  ");
+    //Serial.println(a[i]);
   	i++;
   	if(i == 8)
   	{
