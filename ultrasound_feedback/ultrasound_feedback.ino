@@ -63,7 +63,7 @@ void loop()
   Serial.println("cm Right");
 
 
-  while (cmLeft <= 10 && cmMid > 10 && cmRight > 10)
+  if (cmLeft <= 10 && cmMid > 10 && cmRight > 10)
   {
   	analogWrite(pwm,50);
     Serial.println("right");
@@ -71,7 +71,7 @@ void loop()
     delay(5);
     digitalWrite(reset, LOW);
   }
-  while (cmMid <= 10 && cmRight > 10 && cmLeft > 10)
+  if (cmMid <= 10 && cmRight > 10 && cmLeft > 10)
   {
   	//stop
   	analogWrite(pwm,0);
@@ -82,7 +82,7 @@ void loop()
     delay(5);
     digitalWrite(reset, LOW);
   }
-  while (cmRight <= 10 && cmLeft > 10 && cmMid > 10)
+  if (cmRight <= 10 && cmLeft > 10 && cmMid > 10)
   {
   	analogWrite(pwm,50);
     //move towards left
@@ -91,7 +91,7 @@ void loop()
     delay(5);
     digitalWrite(reset, LOW);
   }
-  while (cmRight <= 10 && cmLeft <= 10 && cmMid <= 10)
+  if (cmRight <= 10 && cmLeft <= 10 && cmMid <= 10)
   {
   	//stop
   	analogWrite(pwm,0);
@@ -103,6 +103,7 @@ void loop()
     delay(5);
     digitalWrite(reset, LOW);
   }
+  delay(50);
 }
 
 
