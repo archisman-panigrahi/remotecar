@@ -124,7 +124,7 @@ slogan.pack(side=tk.BOTTOM)
 root.update()
 width = root.winfo_width()
 
-w1 = Scale(root, from_=0, to=100,length = 0.8*width, width = width/5, tickinterval=10, font=("Arial",15,"bold"), orient=HORIZONTAL,command=speed)
+w1 = Scale(root, from_=0, to=100,length = 0.8*width, width = width/5, tickinterval=10, font=("Arial",15,"bold"),resolution=10, orient=HORIZONTAL,command=speed)
 w1.set(40)
 w1.pack()
 center(root)
