@@ -58,47 +58,47 @@ frame.pack()
 slogan = tk.Button(frame,
                    text="Forward",
                    fg="black",
-                   height="10",
-                   width="15",
+                   height="15",
+                   width="22",
                    command=forward)
 slogan.pack(side=tk.TOP)
 
 slogan = tk.Button(frame,
                    text="Backward",
                    fg="black",
-                   height="10",
-                   width="15",
+                   height="15",
+                   width="22",
                    command=backward)
 slogan.pack(side=tk.BOTTOM)
 
 slogan = tk.Button(frame,
                    text="Left",
                    fg="blue",
-                   height="10",
-                   width="15",
+                   height="15",
+                   width="22",
                    command=left)
 slogan.pack(side=tk.LEFT)
 
 slogan = tk.Button(frame,
                    text="Right",
                    fg="green",
-                   height="10",
-                   width="15",
+                   height="15",
+                   width="22",
                    command=right)
 slogan.pack(side=tk.RIGHT)
 
 slogan = tk.Button(frame,
                    text="Stop",
                    fg="red",
-                   height="10",
-                   width="15",
+                   height="15",
+                   width="22",
                    command=stop)
 slogan.pack(side=tk.BOTTOM)
 
 root.update()
 width = root.winfo_width()
 
-w1 = Scale(root, from_=0, to=100,length = 0.8*width, tickinterval=10, orient=HORIZONTAL,command=speed)
+w1 = Scale(root, from_=0, to=100,length = 0.8*width, width = width/5, tickinterval=10, orient=HORIZONTAL,command=speed)
 w1.set(40)
 w1.pack()
 
