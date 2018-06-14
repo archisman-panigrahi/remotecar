@@ -76,8 +76,8 @@ slogan = tk.Button(frame,
                    bg="blue",
                    fg="white",
                    font=("Arial",15,"bold"),
-                   height="10",
-                   width="15",
+                   height="6",
+                   width="9",
                    command=forward)
 slogan.pack(side=tk.TOP)
 
@@ -86,8 +86,8 @@ slogan = tk.Button(frame,
                    bg="green",
                    fg="white",
                    font=("Arial",15,"bold"),
-                   height="10",
-                   width="15",
+                   height="6",
+                   width="9",
                    command=backward)
 slogan.pack(side=tk.BOTTOM)
 
@@ -96,8 +96,8 @@ slogan = tk.Button(frame,
                    bg="yellow",
                    fg="black",
                    font=("Arial",15,"bold"),
-                   height="10",
-                   width="15",
+                   height="6",
+                   width="9",
                    command=left)
 slogan.pack(side=tk.LEFT)
 
@@ -106,8 +106,8 @@ slogan = tk.Button(frame,
                    bg="yellow",
                    fg="black",
                    font=("Arial",15,"bold"),
-                   height="10",
-                   width="15",
+                   height="6",
+                   width="9",
                    command=right)
 slogan.pack(side=tk.RIGHT)
 
@@ -116,8 +116,8 @@ slogan = tk.Button(frame,
                    bg="red",
                    fg="black",
                    font=("Arial",15,"bold"),
-                   height="10",
-                   width="15",
+                   height="6",
+                   width="9",
                    command=stop)
 slogan.pack(side=tk.BOTTOM)
 
