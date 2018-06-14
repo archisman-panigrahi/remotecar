@@ -1,3 +1,4 @@
+#!/usr/bin/python
 import serial
 try:
         import RPi.GPIO as GPIO
