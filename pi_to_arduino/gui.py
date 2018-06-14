@@ -1,10 +1,13 @@
 import serial
 try:
 	import tkinter as tk
+	from tkinter import *
 except ImportError:
 	import Tkinter as tk
+	from Tkinter import *
 
-from Tkinter import *
+
+
 ser = serial.Serial('/dev/ttyACM0', 9600)
 
 def forward():
