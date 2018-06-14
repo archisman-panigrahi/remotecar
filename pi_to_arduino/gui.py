@@ -30,22 +30,30 @@ frame.pack()
 slogan = tk.Button(frame,
                    text="Forward",
                    fg="red",
+                   height="10",
+                   width="15",
                    command=forward)
-slogan.pack(side=tk.LEFT)
+slogan.pack(side=tk.TOP)
 slogan = tk.Button(frame,
                    text="Backward",
                    fg="green",
+                   height="10",
+                   width="15",
                    command=backward)
-slogan.pack(side=tk.LEFT)
+slogan.pack(side=tk.BOTTOM)
 slogan = tk.Button(frame,
                    text="Left",
                    fg="blue",
+                   height="10",
+                   width="15",
                    command=left)
 slogan.pack(side=tk.LEFT)
 slogan = tk.Button(frame,
                    text="Right",
-                   fg="yellow",
+                   fg="violet",
+                   height="10",
+                   width="15",
                    command=right)
-slogan.pack(side=tk.LEFT)
+slogan.pack(side=tk.RIGHT)
 
 root.mainloop()
