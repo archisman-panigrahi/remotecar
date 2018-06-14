@@ -17,7 +17,22 @@ except ImportError:
 
 
 ser = serial.Serial('/dev/ttyACM0', 9600)
-
+def center(win):
+        """
+        centers a tkinter window
+        :param win: the root or Toplevel window to center
+        """
+        win.update_idletasks()
+        width = win.winfo_width()
+        frm_width = win.winfo_rootx() - win.winfo_x()
+        win_width = width + 2 * frm_width
+        height = win.winfo_height()
+        titlebar_height = win.winfo_rooty() - win.winfo_y()
+        win_height = height + titlebar_height + frm_width
+        x = win.winfo_screenwidth() // 2 - win_width // 2
+        y = win.winfo_screenheight() // 2 - win_height // 2
+        win.geometry('{}x{}+{}+{}'.format(width, height, x, y))
+        win.deiconify()
 def forward():
 	ser.write("a")
 	if (w1.get() == 0):
@@ -101,5 +116,5 @@ width = root.winfo_width()
 w1 = Scale(root, from_=0, to=100,length = 0.8*width, width = width/5, tickinterval=10, orient=HORIZONTAL,command=speed)
 w1.set(40)
 w1.pack()
-
+center(root)
 root.mainloop()
