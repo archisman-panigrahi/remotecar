@@ -65,7 +65,7 @@ def stop():
 	w1.set(0)
 
 root = tk.Tk()
-root.title("		Direction		")
+root.title("Control your car")
 
 frame = tk.Frame(root)
 frame.pack()
