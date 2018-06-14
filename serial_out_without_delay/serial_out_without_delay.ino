@@ -66,26 +66,27 @@ void loop()
       {
         input = Serial.read();
       }
-        if (input == 97) 
+        if (input == 97)
       {
+        //Serial.println(input); //These prints interrupt with the orders from raspberry pi
         copy(a,forward,8);
-        Serial.println("moving forward");
+        //Serial.println("moving forward");
     
       }
       else if (input == 98)
       {
         copy(a,backward,8);
-        Serial.println("moving backward");
+        //Serial.println("moving backward");
       }
       else if (input == 99)
       {
         copy(a,left,8);
-        Serial.println("moving left");
+        //Serial.println("moving left");
       }
       else if (input == 100)
       {
         copy(a,right,8);
-        Serial.println("moving right");
+        //Serial.println("moving right");
       }
   	}
     alterValue(clk);
