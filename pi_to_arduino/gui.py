@@ -72,48 +72,58 @@ frame.pack()
 
 slogan = tk.Button(frame,
                    text="Forward",
-                   fg="black",
-                   height="15",
-                   width="22",
+                   bg="blue",
+                   fg="white",
+                   font=("Arial",15,"bold"),
+                   height="10",
+                   width="15",
                    command=forward)
 slogan.pack(side=tk.TOP)
 
 slogan = tk.Button(frame,
                    text="Backward",
-                   fg="black",
-                   height="15",
-                   width="22",
+                   bg="green",
+                   fg="white",
+                   font=("Arial",15,"bold"),
+                   height="10",
+                   width="15",
                    command=backward)
 slogan.pack(side=tk.BOTTOM)
 
 slogan = tk.Button(frame,
                    text="Left",
-                   fg="blue",
-                   height="15",
-                   width="22",
+                   bg="yellow",
+                   fg="black",
+                   font=("Arial",15,"bold"),
+                   height="10",
+                   width="15",
                    command=left)
 slogan.pack(side=tk.LEFT)
 
 slogan = tk.Button(frame,
                    text="Right",
-                   fg="green",
-                   height="15",
-                   width="22",
+                   bg="yellow",
+                   fg="black",
+                   font=("Arial",15,"bold"),
+                   height="10",
+                   width="15",
                    command=right)
 slogan.pack(side=tk.RIGHT)
 
 slogan = tk.Button(frame,
                    text="Stop",
-                   fg="red",
-                   height="15",
-                   width="22",
+                   bg="red",
+                   fg="black",
+                   font=("Arial",15,"bold"),
+                   height="10",
+                   width="15",
                    command=stop)
 slogan.pack(side=tk.BOTTOM)
 
 root.update()
 width = root.winfo_width()
 
-w1 = Scale(root, from_=0, to=100,length = 0.8*width, width = width/5, tickinterval=10, orient=HORIZONTAL,command=speed)
+w1 = Scale(root, from_=0, to=100,length = 0.8*width, width = width/5, tickinterval=10, font=("Arial",15,"bold"), orient=HORIZONTAL,command=speed)
 w1.set(40)
 w1.pack()
 center(root)
