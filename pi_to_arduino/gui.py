@@ -2,7 +2,7 @@
 import serial
 try:
         import RPi.GPIO as GPIO
-        GPIO.setmode(GPIO.BOARD)
+        GPIO.setmode(GPIO.BCM)
         GPIO.setup(3,GPIO.OUT)
         p = GPIO.PWM(3,100)
         p.start(40)
