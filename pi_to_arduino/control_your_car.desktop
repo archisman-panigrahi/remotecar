@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Control your car
+Exec=/home/pi/engineering-lab-project/pi_to_arduino/gui.py
+Icon=/home/pi/Downloads/car.png
+Type=Application
+Categories=GTK;GNOME;Utility;
