@@ -9,12 +9,12 @@ int i=0;
 int p=0; //This is for stopping the racing of clock
 int input;
 
-int a[8];// = {LOW,HIGH,LOW,HIGH,LOW,LOW,HIGH,HIGH};//{Dummy,Dummy,Dummy,Dummy,front left,front right,back left,back right} 
+int a[8];// = {LOW,HIGH,LOW,HIGH,LOW,LOW,HIGH,HIGH};//{Dummy,Dummy,front left,front right,mid left,mid right,back left,back right} 
 //Motion of wheels - LOW is backward, HIGH is forward
 int forward[8] = {HIGH,HIGH,HIGH,HIGH,HIGH,HIGH,HIGH,HIGH};
 int backward[8] = {LOW,LOW,LOW,LOW,LOW,LOW,LOW};
-int right[8] = {HIGH,LOW,HIGH,LOW,HIGH,LOW,HIGH,HIGH};
-int left[8] = {LOW,HIGH,LOW,HIGH,LOW,HIGH,HIGH,HIGH};
+int right[8] = {HIGH,LOW,HIGH,LOW,HIGH,LOW,HIGH,LOW};
+int left[8] = {LOW,HIGH,LOW,HIGH,LOW,HIGH,LOW,HIGH};
 unsigned long previousTime = 0; //time of previous change
 unsigned long currentTime;
 long interval = 10; //time period of clock in milliseconds
