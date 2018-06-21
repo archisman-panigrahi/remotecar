@@ -70,8 +70,8 @@ def slowleft():
 def slowright():
         ser.write("f")
 	if (w1.get() == 0):
-            w1.set(40)
-            speed(40)
+            w1.set(30)
+            speed(30)
 	print ("slow right")
 def speed(val):
 	print (val)
