@@ -15,8 +15,8 @@ int forward[8] = {HIGH,HIGH,HIGH,HIGH,HIGH,HIGH,HIGH,HIGH};
 int backward[8] = {LOW,LOW,LOW,LOW,LOW,LOW,LOW};
 int fastright[8] = {HIGH,LOW,HIGH,LOW,HIGH,LOW,HIGH,LOW};
 int fastleft[8] = {LOW,HIGH,LOW,HIGH,LOW,HIGH,LOW,HIGH};
-int slowleft[8] = {LOW,HIGH,LOW,HIGH,LOW,HIGH,HIGH,HIGH};
-int slowright[8] = {HIGH,LOW,HIGH,LOW,HIGH,LOW,HIGH,HIGH};
+int slowleft[8] = {LOW,HIGH,LOW,HIGH,HIGH,HIGH,HIGH,HIGH};
+int slowright[8] = {HIGH,LOW,HIGH,LOW,HIGH,HIGH,HIGH,HIGH};
 unsigned long previousTime = 0; //time of previous change
 unsigned long currentTime;
 long interval = 10; //time period of clock in milliseconds
