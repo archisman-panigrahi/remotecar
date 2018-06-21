@@ -13,8 +13,10 @@ int a[8];// = {LOW,HIGH,LOW,HIGH,LOW,LOW,HIGH,HIGH};//{Dummy,Dummy,front left,fr
 //Motion of wheels - LOW is backward, HIGH is forward
 int forward[8] = {HIGH,HIGH,HIGH,HIGH,HIGH,HIGH,HIGH,HIGH};
 int backward[8] = {LOW,LOW,LOW,LOW,LOW,LOW,LOW};
-int right[8] = {HIGH,LOW,HIGH,LOW,HIGH,LOW,HIGH,LOW};
-int left[8] = {LOW,HIGH,LOW,HIGH,LOW,HIGH,LOW,HIGH};
+int fastright[8] = {HIGH,LOW,HIGH,LOW,HIGH,LOW,HIGH,LOW};
+int fastleft[8] = {LOW,HIGH,LOW,HIGH,LOW,HIGH,LOW,HIGH};
+int slowleft[8] = {LOW,HIGH,LOW,HIGH,LOW,HIGH,HIGH,HIGH};
+int slowright[8] = {HIGH,LOW,HIGH,LOW,HIGH,LOW,HIGH,HIGH};
 unsigned long previousTime = 0; //time of previous change
 unsigned long currentTime;
 long interval = 10; //time period of clock in milliseconds
@@ -80,14 +82,22 @@ void loop()
       }
       else if (input == 99)
       {
-        copy(a,left,8);
+        copy(a,fastleft,8);
         //Serial.println("moving left");
       }
       else if (input == 100)
       {
-        copy(a,right,8);
+        copy(a,fastright,8);
         //Serial.println("moving right");
       }
+      else if (input == 101)
+      {
+        copy(a,slowleft,8);
+      }
+      else if (input == 102)
+      {
+        copy(a,slowright,8);
+      } 
   	}
     alterValue(clk);
     p = 0;

@@ -16,8 +16,11 @@ except ImportError:
 	from Tkinter import *
 
 
-
-ser = serial.Serial('/dev/ttyACM0', 9600)
+try:
+        ser = serial.Serial('/dev/ttyACM0', 9600)
+except:
+        print ("Check if Arduino is connected")
+        pass
 def center(win):
         """
         centers a tkinter window
@@ -46,18 +49,30 @@ def backward():
             w1.set(20)
             speed(20)
 	print ("backward")
-def left():
+def fastleft():
 	ser.write("c")
 	if (w1.get() == 0):
-            w1.set(20)
-            speed(20)
-	print ("left")
-def right():
+            w1.set(40)
+            speed(40)
+	print ("fast left")
+def fastright():
 	ser.write("d")
 	if (w1.get() == 0):
-            w1.set(20)
-            speed(20)
-	print ("right")
+            w1.set(40)
+            speed(40)
+	print ("fast right")
+def slowleft():
+        ser.write("e")
+	if (w1.get() == 0):
+            w1.set(30)
+            speed(30)
+	print ("slow left")
+def slowright():
+        ser.write("f")
+	if (w1.get() == 0):
+            w1.set(40)
+            speed(40)
+	print ("slow right")
 def speed(val):
 	print (val)
         p.start(float(val))
@@ -73,9 +88,9 @@ frame.pack()
 
 slogan = tk.Button(frame,
                    text="Forward",
-                   bg="blue",
+                   bg="#0066ff",
                    fg="white",
-                   font=("Arial",15,"bold"),
+                   font=("Arial",12,"bold"),
                    height="6",
                    width="9",
                    command=forward)
@@ -83,48 +98,69 @@ slogan.pack(side=tk.TOP)
 
 slogan = tk.Button(frame,
                    text="Backward",
-                   bg="green",
+                   bg="#3d9c35",
                    fg="white",
-                   font=("Arial",15,"bold"),
+                   font=("Arial",12,"bold"),
                    height="6",
                    width="9",
                    command=backward)
 slogan.pack(side=tk.BOTTOM)
 
 slogan = tk.Button(frame,
-                   text="Left",
-                   bg="yellow",
-                   fg="black",
-                   font=("Arial",15,"bold"),
+                   text="Fast Left",
+                   bg="#f9531c",
+                   fg="white",
+                   font=("Arial",12,"bold"),
                    height="6",
                    width="9",
-                   command=left)
+                   command=fastleft)
 slogan.pack(side=tk.LEFT)
 
 slogan = tk.Button(frame,
-                   text="Right",
-                   bg="yellow",
+                   text="Left",
+                   bg="#f5e220",
                    fg="black",
-                   font=("Arial",15,"bold"),
+                   font=("Arial",12,"bold"),
                    height="6",
                    width="9",
-                   command=right)
+                   command=slowleft)
+slogan.pack(side=tk.LEFT)
+
+slogan = tk.Button(frame,
+                   text="Fast Right",
+                   bg="#f9531c",
+                   fg="white",
+                   font=("Arial",12,"bold"),
+                   height="6",
+                   width="9",
+                   command=fastright)
 slogan.pack(side=tk.RIGHT)
 
 slogan = tk.Button(frame,
-                   text="Stop",
-                   bg="red",
+                   text="Right",
+                   bg="#f5e220",
                    fg="black",
-                   font=("Arial",15,"bold"),
+                   font=("Arial",12,"bold"),
+                   height="6",
+                   width="9",
+                   command=slowright)
+slogan.pack(side=tk.RIGHT)
+slogan = tk.Button(frame,
+                   text="Stop",
+                   bg="#ff5050",
+                   fg="black",
+                   font=("Arial",12,"bold"),
                    height="6",
                    width="9",
                    command=stop)
 slogan.pack(side=tk.BOTTOM)
 
+
+
 root.update()
 width = root.winfo_width()
 
-w1 = Scale(root, from_=0, to=100,length = 0.8*width, width = width/5, tickinterval=10, font=("Arial",15,"bold"),resolution=10, orient=HORIZONTAL,command=speed)
+w1 = Scale(root, from_=0, to=100,length = 0.8*width, width = width/6, tickinterval=10, font=("Arial",15,"bold"),resolution=10, orient=HORIZONTAL,command=speed)
 w1.set(40)
 w1.pack()
 center(root)
